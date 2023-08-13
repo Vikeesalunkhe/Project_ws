@@ -125,13 +125,13 @@ Now, that we have configured the robot with the parameters, let's test whether t
 - Start the display.launch file
     
     ```bash
-    roslaunch robot_description display.launch
+    roslaunch differential_drive_robot_version_1_description display.launch
     ```
     
 - Start the gazebo.launch file
     
     ```bash
-    roslaunch robot_description gazebo.launch
+    roslaunch differential_drive_robot_version_1_description gazebo.launch
     ```
     
 - Setting up Visualization
@@ -258,13 +258,13 @@ Now, that we have configured the robot with the parameters, let's test whether t
 - Start the gazebo.launch file
     
     ```bash
-    roslaunch robot_description gazebo.launch
+    roslaunch differential_drive_robot_version_1_description gazebo.launch
     ```
     
 - Start the display.launch file
     
     ```bash
-    roslaunch robot_description display.launch
+    roslaunch differential_drive_robot_version_1_description display.launch
     ```
     
 - Start the Teleoperation node
@@ -303,41 +303,20 @@ Mapping simply means creating a map or floor plan of the current environment. Th
 💡 **2D Occupancy Grid**
 A special form of a map that is extensively used in Robotic Mapping applications. It addresses the problem of generating maps from noisy and uncertain sensor measurement data, with the assumption that the robot pose is known. In the occupancy grid map, the environment is an evenly spaced field of binary random variables each representing the presence of an obstacle at that location in the environment.
 
-</aside>
-
-### Available Packages for SLAM
-
-- [Gmapping](http://wiki.ros.org/gmapping)
-    
-    Gmapping is a ROS package that deals with SLAM and helps us create a map (2D occupancy grid) via manually moving the robot using the teleop_twist_keyboard node.
-    The slam_gmapping node subscribes to TF and SCAN topics.
-    The node in turn publishes data to MAP, MAP_METADATA, and ENTROPY topics.
-    
-- [Cartographer](http://wiki.ros.org/cartographer)
-    
-    Cartographer is another important ROS package developed and maintained by google for SLAM.
-    
-- [RTAB_map](http://wiki.ros.org/action/fullsearch/rtabmap_ros?action=fullsearch&context=180&value=linkto%3A%22rtabmap_ros%22)
-    
-    A Package useful to carry out 3D Mapping
-    
-- [Map_server](http://wiki.ros.org/map_server)
-    
-    Map_server package helps by providing Maps as a service over ROS. It also provides the map_saver utility, which allows dynamically generated maps to be saved to a file.
-    
+</aside> 
 
 ### Installation of required packages
 
 - Installing the Gmapping package
     
     ```bash
-    sudo apt-get install ros-melodic-gmapping
+    sudo apt-get install ros-<destro>-gmapping
     ```
     
 - Installing the Map Server package
     
     ```bash
-    sudo apt-get install ros-melodic-map-server
+    sudo apt-get install ros-<destro>-map-server
     ```
     
 
@@ -346,13 +325,13 @@ A special form of a map that is extensively used in Robotic Mapping applications
 - Start the gazebo.launch file
     
     ```bash
-    roslaunch robot_description gazebo.launch
+    roslaunch differential_drive_robot_version_1_description gazebo.launch
     ```
     
 - Start the display.launch file
     
     ```bash
-    roslaunch robot_description display.launch
+    roslaunch differential_drive_robot_version_1_description display.launch
     ```
     
 - Run the Gmapping Node
@@ -394,126 +373,39 @@ A special form of a map that is extensively used in Robotic Mapping applications
     rosrun map_server map_saver -f ~/catkin_ws/src/{pkg_name/location}/map_name
     ```
     
-
-### Further reading / References:
-
-[https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping)
-
-[https://in.mathworks.com/discovery/slam.html?requestedDomain=](https://in.mathworks.com/discovery/slam.html?requestedDomain=)
-
-[https://blogs.nvidia.com/blog/2019/07/25/what-is-simultaneous-localization-and-mapping-nvidia-jetson-isaac-sdk/](https://blogs.nvidia.com/blog/2019/07/25/what-is-simultaneous-localization-and-mapping-nvidia-jetson-isaac-sdk/)
-
 ### What is Navigation?
 
 Autonomous Navigation means that a robot can traverse from one point to another without any human intervention. In order to do the same, a robot has to perform complex maneuvers like path planning, localization, dynamic obstacle avoidance, etc. A robot uses many sensors, algorithms, models, etc to help it achieve this amazing feat.
 To successfully implement Autonomous Navigation on a system, there can be many approaches.
 One such approach is discussed here where a Nav Stack is created using various things like AMCL, Move_Base, Map_Server, sensor, and odometry data.
 
-[http://wiki.ros.org/move_base?action=AttachFile&do=get&target=overview_tf.png](http://wiki.ros.org/move_base?action=AttachFile&do=get&target=overview_tf.png)
-
 **RQT graph** 
 
 ![image](https://user-images.githubusercontent.com/101028751/192140762-6351bc87-90d1-4753-b4d1-0223ee759e23.png)
 
-### Terminologies
-
-![image](https://user-images.githubusercontent.com/101028751/192140765-e7971fe1-97b8-4620-b2b7-e67aef741c80.png)
-
-<aside>
-💡 **AMCL**
-It is a probabilistic localization system for a robot moving in 2D. It implements the adaptive Monte Carlo localization approach, which uses a particle filter to track the pose of a robot against a known map. Simply stated, it takes in laser data and outputs the current location of the robot.
-
-</aside>
-
-<aside>
-💡 **Costmap**
-A costmap is a fundamental concept in autonomous robotics. It represents the cost (difficulty) of traversing different areas of the map. The values held in a cost map are usually abstract and don't directly represent any measurement of the world, they are simply used to guide a route planning algorithm to find efficient and safe routes across the map.
-
-</aside>
-
-<aside>
-💡 **Global Costmap**
-A Global Costmap is constructed from the stored knowledge and experience gained while traversing the environment. It usually represents the entire environment.
-
-</aside>
-
-<aside>
-💡 **Local Costmap**
-A Local Costmap is constructed with the current information accessible to the robot from various sensors. It is therefore important to make the system adaptable to dynamic things like moving objects, walking people, etc.
-
-</aside>
-
-<aside>
-💡 **Move Base**
-The move_base package is essentially an action server implementation that attempts to reach a goal. It achieves this feat by using various things like AMCL, Global Costmap, Local Cosmap, Global Planner, Local Planner, Sensor Transforms, Laser data, etc.
-
-</aside>
 
 ### Installation of required packages
 
 - Installing the Map Server package
     
     ```bash
-    sudo apt-get install ros-melodic-map-server
+    sudo apt-get install ros-<destro>-map-server
     ```
     
 - Installing the AMCL package
     
     ```bash
-    sudo apt-get install ros-melodic-amcl
+    sudo apt-get install ros-<destro>-amcl
     ```
     
 - Installing the Move_Base package
     
     ```bash
-    sudo apt-get install ros-melodic-move-base
+    sudo apt-get install ros-<destro>-move-base
     
-    sudo apt-get install ros-melodic-dwa-local-planner
+    sudo apt-get install ros-<destro>-dwa-local-planner
     ```
-    
 
-### Creating a Navigation Stack
-
-- General Instructions
-    
-    Creating a Nav Stack is the most crucial task for an Autonomous system. 
-    All the following steps have been referenced from the ROS wiki. You can refer the ROS wiki page for making these things from scratch.
-    OR
-    You can get these things bundled together in a file that can be downloaded for ease of access.
-    
-- Create **amcl.launch**
-    
-    Create a new launch file with the name amcl.launch
-    Fill in the parameters by referring to the [AMCL](http://wiki.ros.org/amcl) ROS wiki page
-    OR
-    Refer to the amcl.launch file inside the launch folder in the provided reference for making your own file.
-    
-- Create a **params** folder
-    
-    A params folder will be used to store parameter files in YAML format for various things like costmap parameters, path planner parameters, and move base.
-    Create the following parameter files and fill in values from the ROS wiki page (or refer to the params folder provided in reference material)
-    
-    > local_costmap.yaml
-    > 
-    
-    > global_costmap.yaml
-    > 
-    
-    > dwa_planner.yaml
-    > 
-    
-    > move_base.yaml
-    > 
-    
-    > common_costmap.yaml
-    > 
-- Create **move_base.launch**
-    
-    Create a new launch file with the name move_base.launch
-    Fill in the parameters by referring to the [MOVE_BASE](http://wiki.ros.org/move_base) ROS wiki page
-    OR
-    Refer to the move_base.launch file inside the launch folder in the provided reference to make your own file.
-    Adjust the values of location for the parameters section in the new launch file.
     
 - Create **navigation.launch**
     
@@ -527,71 +419,21 @@ The move_base package is essentially an action server implementation that attemp
     Refer to the navigation.launch file for reference.
     
 
-### Implementing Autonomous Navigation
-
-![image](https://user-images.githubusercontent.com/101028751/192140777-c0ef84db-fada-4734-8c2d-0feb62872be6.png)
-
 
 - Start the **gazebo.launch** file
     
     ```bash
-    roslaunch robot_description gazebo.launch
+    roslaunch differential_drive_robot_version_1_description gazebo.launch
     ```
     
 - Start the **navigation.launch** file
     
     ```bash
-    roslaunch robot_description navigation.launch
+    roslaunch differential_drive_robot_version_1_description navigation.launch
     ```
     
-- Setting up **RVIZ Parameters**
+
     
-    Goto RVIZ and click on the add section.
-    Then click on By topic and add the following:
-    
-    > Laser Scan [ By topic > /scan > LaserScan ]
-    > 
-    
-    > Map [ By topic > /map > Map ]
-    > 
-    
-    > Global Costmap [ By topic > /move_base > /global_costmap > /costmap > Map ]
-    > 
-    
-    > Local Costmap [ By topic > /move_base > /local_costmap > /costmap > Map ]
-    > 
-    
-    > Polygon [ By topic > /move_base > /local_costmap > /footprint > Polygon ]
-    > 
-    
-    > Pose Array [ By topic > /particlecloud > PoseArray ]
-    > 
-    
-    > Pose [ By topic > /move_base > /current_goal > Pose ]
-    > 
-    
-    > Global Path [ By topic > /move_base > /DWAPlannerROS > /global_plan > Path ]
-    > 
-    
-    > Local Path [ By topic > /move_base > /DWAPlannerROS > /local_plan > Path ]
-    > 
-    
-    > Final Path [ By topic > /move_base > /NavfnROS > /plan > Path ]
-    > 
-    
-    Finally, Click OK
-    
-- **Tuning** the Dynamics of Robot
-    
-    Now that the robot has autonomous navigation implemented, we can further fine-tune all the parameters being provided to it to make it reach a more optimal solution. 
-    We can start with basic tuning which involves the following parameters:
-    
-    1. Fix your BaseFootPrint size
-    2. Tune your Global Map parameters
-    3. Tune your Local Map parameters
-    4. Increase the Particle size
-    
-    Once, we are done with the basic tuning, then we can shift our focus toward tuning the parameters of the DWA Planner
     
 
 ### Further reading / References
