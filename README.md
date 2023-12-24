@@ -101,8 +101,7 @@ Now, that we have configured the robot with the parameters, let's test whether t
     Find the /scan dropdown and click on the LaserScan option. 
     Finally, Click OK
     
-    ![Screenshot from 2022-08-15 13-43-28.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/29e1857c-35e5-44aa-8703-6e56cab9538b/Screenshot_from_2022-08-15_13-43-28.png)
-    
+![Screenshot from 2023-12-24 23-40-38](https://github.com/Vikeesalunkhe/Project_ws/assets/117392336/ca8fda5d-f766-46b9-8926-cf095d0bb10b)    
 - Visualizing the Environment
     
     Even after completing the Setup, nothing can be seen on RVIZ,
