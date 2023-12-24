@@ -25,7 +25,7 @@ This exports:
 
 ### **original model**
 
-![image](https://user-images.githubusercontent.com/101028751/192140667-8650cdf8-99de-426e-9b2c-1c33121a3aa2.png)
+![Screenshot 2023-05-09 175256](https://github.com/Vikeesalunkhe/Project_ws/assets/117392336/cc4ec390-cf12-4d7a-a406-0a67b54200cf)
 
 ### **Gazebo simulation of exported .urdf and .launch**
 
