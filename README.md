@@ -9,17 +9,6 @@ Ros-projects
 4. **SLAM (Simultaneous localization and mapping)**
 5. **Navigation Stack to Self-design robot**
 
-## **Installation**
-
-Run the following command in your shell.
-
-### **Windows (In PowerShell)**
-
-```python
-cd <path to fusion2urdf>
-Copy-Item ".\URDF_Exporter\" -Destination "${env:APPDATA}\Autodesk\Autodesk Fusion 360\API\Scripts\" -Recurse
-```
-
 ## **What is this script?**
 
 This is a fusion 360 script to export urdf from fusion 360 directly.
@@ -87,36 +76,7 @@ Open your exported URDF file, and navigate to the robot.gazebo file and add the 
   </gazebo>
 ```
 
-As this is a standard plugin, we have to change a few parameters to make it work with our robot.
-
-### Changes to be made
-
-- Change in the reference
     
-    The reference provided to the plugin is to be changed to the appropriate lidar_link_name.
-    The lidar_link_name for your robot can be found in the robot.xacro file.
-    
-- Frame Name for Laser
-    
-    Goto the frameName section, and change the link name from hokuyo_link to the lidar_link_name previously found for the reference section
-    
-- Setting the Laser angular range
-    
-    In the range section of the plugin, the minimum and maximum angles (in radians) can be changed according to the expected angular range.
-    
-- Topic Name for Laser
-    
-    The plugin will publish the point cloud data obtained from the lidar to a topic of our choice.
-    We can conveniently change the topic name to /scan for ease of access later.
-    Goto the topicName section and change the topic name from ‘/rrbot/laser/scan’ to ‘/scan’
-    
-- Removing the GPU usage
-    
-    As we are going to use our CPU instead of a dedicated GPU to handle the computing for our Laser Plugin we have to remove the GPU keyword.
-    The GPU keyword has to be removed from 2 instances;
-    from the sensor type section and the filename section. 
-    
-
 ### Test your Robot
 
 Now, that we have configured the robot with the parameters, let's test whether things are working perfectly.
@@ -431,9 +391,6 @@ One such approach is discussed here where a Nav Stack is created using various t
     ```bash
     roslaunch differential_drive_robot_version_1_description navigation.launch
     ```
-    
-
-    
     
 
 ### Further reading / References
